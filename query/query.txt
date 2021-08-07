@@ -1,2 +1,18 @@
 // thuis is where we will be keeping all sql queries ...
 // you must always exceute new queryies before you run updated project 
+////////////////////////////////////////
+
+Plase maek sure you created a database TraverIS-Project..
+
+Run this queries and make sure you excute one by one
+
+
+/////////////////////////////////
+
+
+
+CREATE TABLE `TraverIS-Project`.`users` ( `user_id` INT NULL ,  `fname` VARCHAR(255) NOT NULL ,  `lname` VARCHAR(255) NOT NULL ,  `gender` VARCHAR(30) NOT NULL ,  `email` VARCHAR(255) NOT NULL ,  `password` VARCHAR(255) NOT NULL ,  `user_type` VARCHAR(50) NOT NULL ,  `reg_date` VARCHAR(50) NOT NULL ) ENGINE = InnoDB;
+
+INSERT INTO `users` (`user_id`, `fname`, `lname`, `gender`, `email`, `password`, `user_type`, `reg_date`) VALUES (NULL, 'Niyonkuru', 'Abou-Shadadi', 'Male', 'aboushadadai@gmail.com', '123', 'Admin', '2021-06-02');
+
+ALTER TABLE `users` ADD PRIMARY KEY( `user_id`);

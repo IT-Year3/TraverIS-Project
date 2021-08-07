@@ -1,3 +1,5 @@
+<?php include 'config/connection.php';  // adding database file ?>
+
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
   <head>

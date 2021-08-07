@@ -1,26 +1,53 @@
     <!--*************___Including-Head parts___**************-->
     <?php 
-    // login session
+   
+    include 'Shared/Head.php';
+     // login session
     
-    if(isset($_POST['login'])){
-//
+     if(isset($_POST['login'])){
 
-
-//
+      if(isset($_POST['email']) && $_POST['email'] != '' && isset($_POST['password']) && $_POST['password'] != ''){ // no null values allowed
+    
+        $sql=mysqli_query($con,"SELECT * FROM users  WHERE email = '".trim($_POST['email'])."' AND password='".trim($_POST['password'])."'");
+        if (mysqli_num_rows($sql)== 1) {
+    
+          $row = mysqli_fetch_array($sql);
+    $_SESSION['userType']=$row['user_type'];
+    $_SESSION['userId']=$row['user_id'];
+    redirect('Admin');
+    message("Dear ".$row['fname']." ".$row['lname'].", Your are welcome, ");
+    die();
+         }else{
+          message("Username or password is incorect!", "error");
+          redirect('index.php');
+          die();
+        }
+    
+      }else{
+        message("Oops..! It seems that something went wrong, Please try again later!", "error");
+        redirect('index.php');
+        die();
+      }
+    
     }
     
+    //
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        // end of loggin session
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    // end of loggin session
-    include 'Shared/Head.php';?>
+    ?>
     <title>SignIN - TraverIS</title>
   </head>
   <body>
@@ -50,6 +77,8 @@
               >
                 Login
               </h1>
+              <?php check_message();?>
+              <form method="POST" action="">
               <label class="block text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Email or Username:</span>
                 <input type="email"
@@ -74,11 +103,12 @@
               >
                 SignIN
               </button>
+  </form>
               <hr class="my-8" />
               <p class="mt-4">
                 <a
                   class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
-                  href="./Register.php"
+                  href="../Register.php"
                 >
                   Don't you have an account? SignUP
                 </a>
@@ -86,7 +116,7 @@
               <p class="mt-4">
                 <a
                   class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
-                  href="./Shared/Forgot.php"
+                  href="../Shared/Forgot.php"
                 >
                   Don't you remember password? Forgot
                 </a>

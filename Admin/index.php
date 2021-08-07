@@ -1,7 +1,17 @@
-    
 
-    <!--*************___Including-Head parts___**************-->
-    <?php include './Includes/Head.php' ?>
+    <?php
+    include '../config/connection.php'; //. including thr connection 
+   if(!isset($_SESSION['userId']) || $_SESSION['userId']==''){ // sessions  is not initilaized!!
+    redirect('../index.ph');
+    message("Access denied, PLease login to continue!","error");
+    die();
+
+   }
+    //// lets bget som,e user informations right?
+
+    // 
+    
+    include './Includes/Head.php' ?>
     <title>Admin Dashboard - TraverIS</title>
 </head>
 <body>
